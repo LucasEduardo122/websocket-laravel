@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
+
+class UserController extends Controller
+{
+    public function index()
+    {
+
+        $users = User::where('id', '!=', Auth::id())->get();
+
+        return response()->json([
+            'users' => $users
+        ], Response::HTTP_OK);
+    }
+
+    public function show($user) {
+
+        $users = User::where(['id' => $user])->first();
+
+        return response()->json([
+            'active' => $users
+        ], Response::HTTP_OK);
+    }
+
+    public function logged() {
+        $users = User::where(['id' => Auth::id()])->first();
+        return response()->json([
+            'logged' => $users
+        ], Response::HTTP_OK);
+    }
+}

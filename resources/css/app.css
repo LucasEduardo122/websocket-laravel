@@ -1,0 +1,13 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.messageFromMe {
+    background-color: yellow;
+    opacity: 25;
+  }
+  
+  .messageToMe {
+    background-color: gray;
+    opacity: 25;
+  }
